@@ -32,6 +32,8 @@ function shouldBeArray(obj) {
 	var innerObj = cv2[0];
 	if(innerObj == undefined)
 		return false;
+	if(typeof innerObj == "string")
+		return false;
 	var max = -2;
 	var count = 0;
 	var firstNumber = -999;
