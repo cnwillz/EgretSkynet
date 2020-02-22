@@ -32,7 +32,7 @@ function shouldBeArray(obj) {
 	var innerObj = cv2[0];
 	if(innerObj == undefined)
 		return false;
-	if(typeof innerObj == "string")
+	if(typeof innerObj != "object")
 		return false;
 	var max = -2;
 	var count = 0;
