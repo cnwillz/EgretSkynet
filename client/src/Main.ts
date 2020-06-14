@@ -146,7 +146,15 @@ heartbeat 1 {}
         // this.test2();
 
         GlobalConfig.DecompressZip();
-        console.log("已载入地形：" + GlobalConfig.ins().BiomesConfig[0].name);
+
+        let biomeStr = "";
+        for (var key in GlobalConfig.ins().BiomesConfig) {
+            if (GlobalConfig.ins().BiomesConfig.hasOwnProperty(key)) {
+                var element = GlobalConfig.ins().BiomesConfig[key];
+                biomeStr = biomeStr + " " + element.name;
+            }
+        }
+        console.log("已载入地形：" + biomeStr);
     }
 
     private async loadResource() {
