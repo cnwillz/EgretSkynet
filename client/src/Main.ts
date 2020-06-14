@@ -144,6 +144,9 @@ heartbeat 1 {}
         this.doTest();
         // console.log("test2() start")
         // this.test2();
+
+        GlobalConfig.DecompressZip();
+        console.log("已载入地形：" + GlobalConfig.ins().BiomesConfig[0].name);
     }
 
     private async loadResource() {
