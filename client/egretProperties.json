@@ -28,6 +28,10 @@
       "name": "promise"
     },
     {
+      "name": "jszip",
+      "path": "./libs/jszip"
+    },
+    {
       "name": "WXCloudApi",
       "path": "./libs/WXCloudApi"
     },

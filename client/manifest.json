@@ -8,6 +8,7 @@
 		"libs/modules/tween/tween.js",
 		"libs/modules/socket/socket.js",
 		"libs/modules/promise/promise.js",
+		"libs/jszip/jszip.js",
 		"libs/WXCloudApi/WXCloudApi.js",
 		"libs/egretmgobe/egretmgobe.js",
 		"libs/buffer/buffer.js"
