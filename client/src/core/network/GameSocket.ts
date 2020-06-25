@@ -53,7 +53,16 @@ namespace network {
                 //request
                 let handler = this.handlers[name];
                 if(handler) {
-                    handler(message.content);
+                    if(message.response) {
+                        let socket = this.socket;
+                        handler(message.content, function(data, ud : any = null) {
+                            let buffer = message.response(data, ud);
+                            var byte : egret.ByteArray = new egret.ByteArray(buffer);
+                            socket.writeBytes(byte);
+                        });
+                    } else {
+                        handler(message.content);
+                    }
                 } else {
                     console.warn(name + " 协议没有注册处理回调!")
                 }
@@ -98,6 +107,12 @@ namespace network {
 
         private onSocketOpen(): void {
             console.info("WebSocketOpen")
+
+            this.addHandler("auth", function(data, response) {
+                console.log("auth")
+                response({ token : "nothing"})
+            })
+
             this.addHandler("heartbeat", function(data) {
                 console.log("heartbeat")
             })

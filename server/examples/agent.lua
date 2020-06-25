@@ -6,11 +6,14 @@ local sprotoloader = require "sprotoloader"
 local WATCHDOG
 local GATE
 local host
-local send_request
+local host_send_request
 
 local CMD = {}
 local REQUEST = {}
+local RESPONSE = {}
 local client_fd
+local session_id = 0
+local session_callback = {}
 
 function REQUEST:get()
 	print("get", self.what)
@@ -44,6 +47,17 @@ local function request(name, args, response)
 	end
 end
 
+function RESPONSE:auth()
+	print("auth token get: ".. self.token)
+end
+
+local function response(session, args)
+	print("response:::", session, args)
+	local f = assert(session_callback[session])
+	local r = f(args)
+	session_callback[session] = nil
+end
+
 local function send_package(pack)
 	--local package = string.pack(">s2", pack)
 	--socket.write(client_fd, package)
@@ -71,10 +85,24 @@ skynet.register_protocol {
 			end
 		else
 			assert(type == "RESPONSE")
-			error "This example doesn't support request client"
+			--error "This example doesn't support request client"
+			local ok, err = pcall(response, ...)
+			if not ok then
+				print(tostring(err))
+			end
 		end
 	end
 }
+
+function send_request(p, data)
+	if RESPONSE[p] then
+		session_id = session_id + 1
+		session_callback[session_id] = RESPONSE[p]
+		send_package(host_send_request(p, data, session_id))
+	else
+		send_package(host_send_request(p, data))
+	end
+end
 
 function CMD.start(conf)
 	local fd = conf.client
@@ -85,10 +113,11 @@ function CMD.start(conf)
 	GATE = gate
 	-- slot 1,2 set at main.lua
 	host = sprotoloader.load(1):host "package"
-	send_request = host:attach(sprotoloader.load(2))
+	host_send_request = host:attach(sprotoloader.load(2))
+	send_request("auth", nil)
 	skynet.fork(function()
 		while true do
-			send_package(send_request "heartbeat")
+			send_request("heartbeat")
 			skynet.sleep(500)
 		end
 	end)

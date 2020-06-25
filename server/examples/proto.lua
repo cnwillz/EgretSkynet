@@ -48,7 +48,13 @@ proto.s2c = sprotoparser.parse [[
 	ud 2 : string
 }
 
-heartbeat 1 {}
+auth 1 {
+	response {
+		token 0 : string
+	}
+}
+
+heartbeat 2 {}
 ]]
 
 return proto

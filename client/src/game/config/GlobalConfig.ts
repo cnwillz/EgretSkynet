@@ -13,7 +13,7 @@ class GlobalConfig extends GameGlobalConfigDef {
 		}
 		GlobalConfig.setIns(jsonData);
 		RES.destroyRes("config_pack");
-		console.log("配置解析完成 耗时:" + (egret.getTimer() - t));
+		console.log("配置解析完成 耗时: " + (egret.getTimer() - t) + " ms");
     }
 
     private static _instance: any;

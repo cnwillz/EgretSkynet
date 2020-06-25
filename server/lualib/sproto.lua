@@ -201,7 +201,7 @@ function host:dispatch(...)
 	header_tmp.ud = nil
 	local header, size = core.decode(self.__package, bin, header_tmp)
 	local content = bin:sub(size + 1)
-	if header.type then
+	if header.type > 0 then
 		-- request
 		local proto = queryproto(self.__proto, header.type)
 		local result

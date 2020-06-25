@@ -76,12 +76,18 @@ quit 5 {}
         `
         let s2cProto = `
 .package {
-	type 0 : integer
-	session 1 : integer
+    type 0 : integer
+    session 1 : integer
     ud 2 : string
 }
 
-heartbeat 1 {}
+auth 1 {
+    response {
+        token 0 : string
+    }
+}
+
+heartbeat 2 {}
         `
         let s2c = new sproto.SprotoManager(s2cProto)
         let c2s = new sproto.SprotoManager(c2sProto)
