@@ -1,5 +1,6 @@
 local skynet = require "skynet"
---local socket = require "skynet.socket"
+local sharedata = require "skynet.sharedata"
+
 local sproto = require "sproto"
 local sprotoloader = require "sprotoloader"
 
@@ -122,6 +123,8 @@ function CMD.start(conf)
 		end
 	end)
 
+	local r = sharedata.query("BiomesConfig")
+	print("config:"..r[3].id)
 	
 	skynet.call(gate, "lua", "forward", fd)
 end

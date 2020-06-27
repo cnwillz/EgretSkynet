@@ -5,6 +5,8 @@ local SOCKET = {}
 local gate
 local agent = {}
 
+local config
+
 local MODE = ...
 
 function SOCKET.open(fd, addr)
@@ -62,4 +64,5 @@ skynet.start(function()
 	end)
 
 	gate = skynet.newservice("gate", MODE)
+	config = skynet.newservice("config")
 end)
