@@ -111,6 +111,8 @@ local function newobj(name, tbl)
 	-- pool_count[name] = { n = 0, threshold = 1000 }
 end
 
+local global_tbl = {}
+
 local function InitConfig(path)
 	local LAN = {}
 	local configPaths = {}
@@ -127,9 +129,10 @@ local function InitConfig(path)
 		end
 		for name,config in pairs(env) do
 			if name ~= "LAN" then
-				configPaths[name] = filename
+                configPaths[name] = filename
+                global_tbl[name] = config
                 --CMD.new(name,config)
-                newobj(name, config)
+                -- newobj(name, config)
                 -- print(name)
                 --dump(config)
 			end
@@ -170,6 +173,32 @@ local function InitConfig(path)
 		end
 	end
     fp:close()   
+    sharedata.new("GlobalConfig", global_tbl)
+end
+
+function CMD.init(namePath, configPath)
+
+end
+
+-- todo call callbacks to registered handlers
+function CMD.refresh(name)
+
+end
+
+function CMD.refresh_all()
+
+end
+
+function CMD.new(name, t, ...)
+
+end
+
+function CMD.delete(name)
+
+end
+
+function CMD.update(name, t, ...)
+
 end
 
 skynet.start(function()
@@ -177,6 +206,12 @@ skynet.start(function()
     InitConfig("script\\config")
     -- dump(env)
 
-    -- local r = sharedata.query("BiomesConfig")
+    -- local r = sharedata.query("GlobalConfig")
     -- dump(r)
+
+    skynet.dispatch("lua", function(_,_, command, ...)
+		--skynet.trace()
+		local f = CMD[command]
+		skynet.ret(skynet.pack(f(...)))
+	end)
 end)

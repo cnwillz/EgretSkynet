@@ -16,6 +16,8 @@ local client_fd
 local session_id = 0
 local session_callback = {}
 
+local config
+
 function REQUEST:get()
 	print("get", self.what)
 	local r = skynet.call("SIMPLEDB", "lua", "get", self.what)
@@ -122,9 +124,6 @@ function CMD.start(conf)
 			skynet.sleep(500)
 		end
 	end)
-
-	local r = sharedata.query("BiomesConfig")
-	print("config:"..r[3].id)
 	
 	skynet.call(gate, "lua", "forward", fd)
 end
@@ -140,4 +139,7 @@ skynet.start(function()
 		local f = CMD[command]
 		skynet.ret(skynet.pack(f(...)))
 	end)
+
+	config = sharedata.query("GlobalConfig")
+	print("config:"..config.BiomesConfig[3].id)
 end)
