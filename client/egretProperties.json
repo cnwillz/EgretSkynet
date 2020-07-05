@@ -22,8 +22,8 @@
       "name": "tween"
     },
     {
-			"name": "socket"
-		},
+      "name": "socket"
+    },
     {
       "name": "promise"
     },
@@ -49,5 +49,10 @@
       "appname": "test egret",
       "packagename": "com.companyname"
     }
+  },
+  "eui": {
+    "exmlRoot": [
+      "resource/eui_skins"
+    ]
   }
 }
