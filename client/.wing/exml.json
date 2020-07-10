@@ -1,0 +1,19 @@
+{
+  "design": {
+    "height": "1136",
+    "width": "640"
+  },
+  "17333ef6fd3": {
+    "backgroundX": 0,
+    "backgroundY": 0,
+    "backgroundWidth": -1,
+    "backgroundHeight": -1,
+    "useBgImage": false,
+    "useBgColor": false,
+    "backgroundAlpha": 100,
+    "bindingDataTestObj": []
+  },
+  "global": {
+    "globalBindingDataTestObj": []
+  }
+}

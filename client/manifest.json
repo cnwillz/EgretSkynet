@@ -15,14 +15,17 @@
 	],
 	"game": [
 		"bin-debug/game/config/GlobalConfigDef.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/AssetAdapter.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
-		"bin-debug/core/network/GameSocket.js",
+		"bin-debug/PreLoadingUI.js",
+		"bin-debug/ThemeAdapter.js",
+		"bin-debug/CoreLoadingUI.js",
 		"bin-debug/core/sproto/RpcMessage.js",
 		"bin-debug/core/sproto/Sproto.js",
 		"bin-debug/core/sproto/SprotoManager.js",
 		"bin-debug/core/sproto/SprotoRpc.js",
-		"bin-debug/game/config/GlobalConfig.js"
+		"bin-debug/game/config/GlobalConfig.js",
+		"bin-debug/core/network/GameSocket.js"
 	]
 }

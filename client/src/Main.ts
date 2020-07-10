@@ -27,14 +27,14 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////
 
-class Main extends egret.DisplayObjectContainer {
+class Main extends eui.UILayer {
 
 
 
-    public constructor() {
-        super();
-        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
-    }
+    // public constructor() {
+    //     super();
+    //     this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+    // }
 
     private doTest() {
         let c2sProto = `
@@ -110,8 +110,8 @@ heartbeat 2 {}
         gs.initSocket();
     }
 
-    private onAddToStage(event: egret.Event) {
-      
+    protected createChildren(): void {
+        super.createChildren();
 
         egret.lifecycle.addLifecycleListener((context) => {
             // custom lifecycle plugin
@@ -128,18 +128,23 @@ heartbeat 2 {}
         egret.lifecycle.onResume = () => {
             egret.ticker.resume();
         }
+        
+        //inject the custom material parser
+        //注入自定义的素材解析器
+        let assetAdapter = new AssetAdapter();
+        egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
+        egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
+
 
         this.runGame().catch(e => {
-            // console.error(e);
             console.error(e.stack);
         })
-
-
-
     }
 
     private async runGame() {
+        await this.loadBasicResource()
         await this.loadResource()
+        // return;
         this.createGameScene();
         const result = await RES.getResAsync("description_json")
         this.startAnimation(result);
@@ -163,12 +168,46 @@ heartbeat 2 {}
         console.log("已载入地形：" + biomeStr);
     }
 
-    private async loadResource() {
+    private async loadBasicResource() {
         try {
-            const loadingView = new LoadingUI();
+            const loadingView = new PreLoadingUI();
             this.stage.addChild(loadingView);
             await RES.loadConfig("resource/default.res.json", "resource/");
+            await this.loadTheme();
             await RES.loadGroup("preload", 0, loadingView);
+            this.stage.removeChild(loadingView);
+        }
+        catch (e) {
+            console.error(e);
+        }
+    }
+
+    private loadTheme() {
+        return new Promise((resolve, reject) => {
+            // load skin theme configuration file, you can manually modify the file. And replace the default skin.
+            //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
+            let theme = new eui.Theme("resource/default.thm.json", this.stage);
+            theme.addEventListener(eui.UIEvent.COMPLETE, () => {
+                resolve();
+            }, this);
+
+        })
+    }
+
+    private delay(ms: number) {
+        return new Promise( resolve => setTimeout(resolve, ms) );
+    }
+
+    private async loadResource() {
+        try {
+            const loadingView = new CoreLoadingUI();
+            this.stage.addChild(loadingView);
+            for (let i = 1; i <= 10; i++) {
+                loadingView.onProgress(i, 10);
+                await this.delay(300);
+            }
+            // await RES.loadConfig("resource/default.res.json", "resource/");
+            // await RES.loadGroup("preload", 0, loadingView);
             this.stage.removeChild(loadingView);
         }
         catch (e) {

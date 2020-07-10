@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="LoadingUISkin"
+	 width="640"
+	height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<w:Config id="17333ef6fd3"/>
+	<e:Image scaleX="1" scaleY="1" fillMode="scale" source="bg_jpg" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" width="640" height="1136"/>
+	<e:Label text="Label" y="798.546" name="label" background="false" border="false" blendMode="normal" skewX="0" italic="false" scaleX="1" scaleY="1" horizontalCenter="0" textColor="0xFFFFFF"/>
+</e:Skin>
