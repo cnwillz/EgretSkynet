@@ -3,6 +3,10 @@
 		{
 			"keys": "bg_jpg,egret_icon_png,description_json,config_pack,checkbox_select_disabled_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,button_down_png,button_up_png,checkbox_select_down_png",
 			"name": "preload"
+		},
+		{
+			"keys": "roguelikeitems_json",
+			"name": "demo"
 		}
 	],
 	"resources": [
@@ -140,6 +144,12 @@
 			"url": "assets/CheckBox/checkbox_unselect.png",
 			"type": "image",
 			"name": "checkbox_unselect_png"
+		},
+		{
+			"url": "assets/pixel/roguelikeitems.json",
+			"type": "sheet",
+			"name": "roguelikeitems_json",
+			"subkeys": "roguelikeitems_1,roguelikeitems_10,roguelikeitems_100,roguelikeitems_101,roguelikeitems_102,roguelikeitems_103,roguelikeitems_104,roguelikeitems_105,roguelikeitems_106,roguelikeitems_107,roguelikeitems_108,roguelikeitems_109,roguelikeitems_11,roguelikeitems_110,roguelikeitems_111,roguelikeitems_112,roguelikeitems_113,roguelikeitems_114,roguelikeitems_115,roguelikeitems_116,roguelikeitems_117,roguelikeitems_118,roguelikeitems_119,roguelikeitems_12,roguelikeitems_120,roguelikeitems_121,roguelikeitems_122,roguelikeitems_123,roguelikeitems_124,roguelikeitems_125,roguelikeitems_126,roguelikeitems_127,roguelikeitems_128,roguelikeitems_129,roguelikeitems_13,roguelikeitems_130,roguelikeitems_131,roguelikeitems_132,roguelikeitems_133,roguelikeitems_134,roguelikeitems_135,roguelikeitems_136,roguelikeitems_137,roguelikeitems_138,roguelikeitems_139,roguelikeitems_14,roguelikeitems_140,roguelikeitems_141,roguelikeitems_142,roguelikeitems_143,roguelikeitems_144,roguelikeitems_145,roguelikeitems_146,roguelikeitems_147,roguelikeitems_148,roguelikeitems_149,roguelikeitems_15,roguelikeitems_150,roguelikeitems_151,roguelikeitems_152,roguelikeitems_153,roguelikeitems_155,roguelikeitems_156,roguelikeitems_157,roguelikeitems_158,roguelikeitems_159,roguelikeitems_16,roguelikeitems_160,roguelikeitems_161,roguelikeitems_162,roguelikeitems_163,roguelikeitems_164,roguelikeitems_165,roguelikeitems_166,roguelikeitems_167,roguelikeitems_168,roguelikeitems_169,roguelikeitems_17,roguelikeitems_170,roguelikeitems_171,roguelikeitems_172,roguelikeitems_173,roguelikeitems_174,roguelikeitems_175,roguelikeitems_176,roguelikeitems_177,roguelikeitems_178,roguelikeitems_179,roguelikeitems_18,roguelikeitems_180,roguelikeitems_181,roguelikeitems_19,roguelikeitems_2,roguelikeitems_20,roguelikeitems_21,roguelikeitems_22,roguelikeitems_23,roguelikeitems_24,roguelikeitems_25,roguelikeitems_26,roguelikeitems_27,roguelikeitems_28,roguelikeitems_29,roguelikeitems_3,roguelikeitems_30,roguelikeitems_31,roguelikeitems_32,roguelikeitems_33,roguelikeitems_34,roguelikeitems_35,roguelikeitems_36,roguelikeitems_37,roguelikeitems_38,roguelikeitems_39,roguelikeitems_4,roguelikeitems_40,roguelikeitems_41,roguelikeitems_42,roguelikeitems_43,roguelikeitems_44,roguelikeitems_45,roguelikeitems_46,roguelikeitems_47,roguelikeitems_48,roguelikeitems_49,roguelikeitems_5,roguelikeitems_50,roguelikeitems_51,roguelikeitems_52,roguelikeitems_53,roguelikeitems_54,roguelikeitems_55,roguelikeitems_56,roguelikeitems_57,roguelikeitems_58,roguelikeitems_59,roguelikeitems_6,roguelikeitems_60,roguelikeitems_61,roguelikeitems_62,roguelikeitems_63,roguelikeitems_64,roguelikeitems_65,roguelikeitems_66,roguelikeitems_67,roguelikeitems_68,roguelikeitems_69,roguelikeitems_7,roguelikeitems_70,roguelikeitems_71,roguelikeitems_72,roguelikeitems_73,roguelikeitems_74,roguelikeitems_75,roguelikeitems_76,roguelikeitems_77,roguelikeitems_78,roguelikeitems_79,roguelikeitems_8,roguelikeitems_80,roguelikeitems_81,roguelikeitems_82,roguelikeitems_83,roguelikeitems_84,roguelikeitems_85,roguelikeitems_86,roguelikeitems_87,roguelikeitems_88,roguelikeitems_89,roguelikeitems_9,roguelikeitems_90,roguelikeitems_91,roguelikeitems_92,roguelikeitems_93,roguelikeitems_94,roguelikeitems_95,roguelikeitems_96,roguelikeitems_97,roguelikeitems_98,roguelikeitems_99"
 		}
 	]
 }

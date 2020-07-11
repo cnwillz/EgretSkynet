@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="DemoUiSkin"
+	 width="640"
+	height="1136" xmlns:e="http://ns.egret.com/eui">
+	<e:Label text="Pixel Game" y="905.42" size="64" horizontalCenter="0.5"/>
+	<e:Image source="roguelikeitems_json.roguelikeitems_104" x="155" y="292.713" scaleX="8" scaleY="8"/>
+	<e:Image source="roguelikeitems_json.roguelikeitems_106" x="155" y="552.371" scaleX="8" scaleY="8"/>
+	<e:Image source="roguelikeitems_json.roguelikeitems_107" x="358" y="292.713" scaleX="8" scaleY="8"/>
+	<e:Image source="roguelikeitems_json.roguelikeitems_108" x="358" y="552.371" scaleX="8" scaleY="8"/>
+</e:Skin>

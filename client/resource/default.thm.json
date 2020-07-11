@@ -27,7 +27,8 @@
 		"resource/eui_skins/ScrollerSkin.exml",
 		"resource/eui_skins/TextInputSkin.exml",
 		"resource/eui_skins/ToggleSwitchSkin.exml",
-		"resource/eui_skins/ui/loadingUiSkin.exml",
+		"resource/eui_skins/ui/DemoUiSkin.exml",
+		"resource/eui_skins/ui/LoadingUiSkin.exml",
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml"
 	],

@@ -112,6 +112,7 @@ heartbeat 2 {}
 
     protected createChildren(): void {
         super.createChildren();
+        egret.Bitmap.defaultSmoothing = false;
 
         egret.lifecycle.addLifecycleListener((context) => {
             // custom lifecycle plugin
@@ -204,10 +205,10 @@ heartbeat 2 {}
             this.stage.addChild(loadingView);
             for (let i = 1; i <= 10; i++) {
                 loadingView.onProgress(i, 10);
-                await this.delay(300);
+                await this.delay(100);
             }
             // await RES.loadConfig("resource/default.res.json", "resource/");
-            // await RES.loadGroup("preload", 0, loadingView);
+            await RES.loadGroup("demo", 0, loadingView);
             this.stage.removeChild(loadingView);
         }
         catch (e) {
@@ -224,6 +225,8 @@ heartbeat 2 {}
     private createGameScene() {
         let sky = this.createBitmapByName("bg_jpg");
         this.addChild(sky);
+        let demoUi = new DemoGameUI();
+        this.addChild(demoUi);
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
         sky.width = stageW;

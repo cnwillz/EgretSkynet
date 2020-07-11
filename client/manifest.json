@@ -16,6 +16,7 @@
 	"game": [
 		"bin-debug/game/config/GlobalConfigDef.js",
 		"bin-debug/AssetAdapter.js",
+		"bin-debug/DemoGameUI.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
 		"bin-debug/PreLoadingUI.js",
