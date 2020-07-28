@@ -176,6 +176,8 @@ local function InitConfig(path)
     sharedata.new("GlobalConfig", global_tbl)
 end
 
+local CMD = {}
+
 function CMD.init(namePath, configPath)
 
 end
