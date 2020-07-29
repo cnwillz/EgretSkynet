@@ -160,6 +160,19 @@ heartbeat 2 {}
         // console.log("test2() start")
         // this.test2();
 
+        //初始化事件系统
+        World.shareInstance.createSystem(EventSystem).execute()
+
+        World.shareInstance.createSystem(TimerSystem).execute()
+        World.shareInstance.createSystem(GameSystem).execute()
+        World.shareInstance.createSystem(SoundSystem).execute()
+        World.shareInstance.createSystem(PoolSystem).execute()
+        World.shareInstance.createSystem(AnimationSystem).execute()
+        
+        //初始化UI管理系统
+        let uiManageSys = World.shareInstance.createSystem(UIManageSystem)
+        uiManageSys.execute()
+
         GlobalConfig.DecompressZip();
 
         let biomeStr = "";
@@ -204,15 +217,9 @@ heartbeat 2 {}
 
     private async loadResource() {
         try {
-            const loadingView = new CoreLoadingUI();
-            this.stage.addChild(loadingView);
-            for (let i = 1; i <= 10; i++) {
-                loadingView.onProgress(i, 10);
-                await this.delay(100);
-            }
-            // await RES.loadConfig("resource/default.res.json", "resource/");
-            await RES.loadGroup("demo", 0, loadingView);
-            this.stage.removeChild(loadingView);
+            let loadSys = World.shareInstance.createSystem(ResourceLoadSystem)
+            loadSys.execute()
+            await loadSys.loadGroup("demo")
         }
         catch (e) {
             console.error(e);

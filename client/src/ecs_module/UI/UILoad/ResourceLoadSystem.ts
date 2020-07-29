@@ -20,6 +20,10 @@ class ResourceLoadSystem extends System implements RES.PromiseTaskReporter {
 		return comp.pathMap[path] + name
 	}
 
+	private delay(ms: number) {
+        return new Promise( resolve => setTimeout(resolve, ms) );
+    }
+
 	public async loadGroup(group)
 	{
 		if(!RES.isGroupLoaded(group)){
@@ -27,6 +31,10 @@ class ResourceLoadSystem extends System implements RES.PromiseTaskReporter {
 			Main.STAGE.addChild(loadingView);
 			await RES.loadGroup(group, 0, this);
 			let uILoadEntity = World.shareInstance.getEntity(ResourceLoadEntity)
+			for (let i = 1; i <= 10; i++) {
+                loadingView.onProgress(i, 10);
+                await this.delay(300);
+            }
 			uILoadEntity.removeComponent(loadingView)
 			Main.STAGE.removeChild(loadingView);
         }	
@@ -58,32 +66,13 @@ class ResourceLoadSystem extends System implements RES.PromiseTaskReporter {
 	onProgress(current: number, total: number): void {
 		let uILoadEntity = World.shareInstance.getEntity(ResourceLoadEntity)
 		let loadingView = uILoadEntity.getComponent(LoadingUI)
-		loadingView.textField.text = `Loading ` + "("+ Math.floor(current / total * 100) + " %)..";
+		loadingView.onProgress(current, total)
     }
 
 	private createLoadingView():any
 	{
 		let uILoadEntity = World.shareInstance.getEntity(ResourceLoadEntity)
 		let loadingView = uILoadEntity.addComponent(LoadingUI)
-		if(!loadingView.maskBg)
-		{
-			loadingView.maskBg = new egret.Sprite();
-			loadingView.maskBg.touchEnabled = true;
-			loadingView.maskBg.graphics.beginFill(1,0.7);
-			loadingView.maskBg.graphics.drawRect(0, 0, StageSystem.stageWidth, StageSystem.stageHeight);
-			loadingView.maskBg.graphics.endFill();
-			loadingView.addChild(loadingView.maskBg)
-		}
-		loadingView.textField = new egret.TextField();
-		loadingView.addChild(loadingView.textField);
-		loadingView.textField.y = StageSystem.stageHeight / 2;
-		loadingView.textField.x = StageSystem.stageWidth / 2;
-		loadingView.textField.width = 480;
-		loadingView.textField.height = 100;
-		loadingView.textField.anchorOffsetX = 240
-		loadingView.textField.anchorOffsetY = 50
-		loadingView.textField.textAlign = "center";
-		loadingView.textField.text = `Loading ` + "(0 %)..";
 		return loadingView
 	}
 }

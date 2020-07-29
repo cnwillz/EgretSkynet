@@ -19,7 +19,6 @@
 		"bin-debug/ecs_module/Base/Component.js",
 		"bin-debug/ecs_module/Base/Entity.js",
 		"bin-debug/ecs_module/Base/ISystem.js",
-		"bin-debug/Platform.js",
 		"bin-debug/PreLoadingUI.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/core/network/GameSocket.js",
@@ -33,16 +32,16 @@
 		"bin-debug/ecs_module/Animation/AnimationLoader.js",
 		"bin-debug/ecs_module/Animation/AnimationSystem.js",
 		"bin-debug/AssetAdapter.js",
-		"bin-debug/DemoGameUI.js",
-		"bin-debug/ecs_module/Base/IdGenerator.js",
 		"bin-debug/Main.js",
+		"bin-debug/ecs_module/Base/IdGenerator.js",
+		"bin-debug/Platform.js",
 		"bin-debug/ecs_module/Base/World.js",
 		"bin-debug/ecs_module/Event/EventDispatcherComponent.js",
 		"bin-debug/ecs_module/Event/EventEntity.js",
 		"bin-debug/ecs_module/Event/EventMetaComponent.js",
 		"bin-debug/ecs_module/Event/EventSystem.js",
-		"bin-debug/CoreLoadingUI.js",
-		"bin-debug/ecs_module/Game/GameEntity.js",
+		"bin-debug/ecs_module/Game/GameComponent.js",
+		"bin-debug/DemoGameUI.js",
 		"bin-debug/ecs_module/Game/GameSystem.js",
 		"bin-debug/ecs_module/ObjectPool/PoolComponent.js",
 		"bin-debug/ecs_module/ObjectPool/PoolEntity.js",
@@ -67,6 +66,6 @@
 		"bin-debug/ecs_module/UI/UILoad/ResourceLoadSystem.js",
 		"bin-debug/ecs_module/Utils/ClassSystem.js",
 		"bin-debug/game/config/GlobalConfig.js",
-		"bin-debug/ecs_module/Game/GameComponent.js"
+		"bin-debug/ecs_module/Game/GameEntity.js"
 	]
 }
