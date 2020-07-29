@@ -6,6 +6,10 @@ namespace network {
         private socket: egret.WebSocket;
         public rpc: sproto.SprotoRpc;
 
+        public onConnected: Function;
+        public onDisconnected: Function;
+        public onError: Function;
+
         constructor(s2c: sproto.SprotoManager, c2s: sproto.SprotoManager) {
             this.rpc = new sproto.SprotoRpc(s2c, c2s)
         }
@@ -106,34 +110,21 @@ namespace network {
         }
 
         private onSocketOpen(): void {
-            console.info("WebSocketOpen")
-
-            this.addHandler("auth", function(data, response) {
-                console.log("auth")
-                response({ token : "nothing"})
-            })
-
-            this.addHandler("heartbeat", function(data) {
-                console.log("heartbeat")
-            })
-
-            this.sendRequest("handshake", null, function(data) {
-                console.log(data.msg)
-            })
-            this.sendRequest("set", { what : "hello", value : "world" }, function(data) {
-                 this.sendRequest("get", { what : "hello"}, function(data) {
-                     console.log("get", data.result)
-                 })
-            }.bind(this))
-            this.sendRequest("say", { msg : "say something" })
+            if(this.onConnected) {
+                this.onConnected(this)
+            }
         }
 
         private onSocketClose(): void {
-            console.info("WebSocketClose")
+            if(this.onDisconnected) {
+                this.onDisconnected()
+            }
         }
 
         private onSocketError(): void {
-            console.error("WebSocketError")
+            if(this.onError) {
+                this.onError()
+            }
         }
     }
 }
