@@ -10,7 +10,7 @@ namespace network {
             this.rpc = new sproto.SprotoRpc(s2c, c2s)
         }
 
-        public initSocket(): void {
+        public connect(ip, port): void {
             try {
                 //创建 WebSocket 对象
                 this.socket = new egret.WebSocket();
@@ -24,7 +24,7 @@ namespace network {
                 this.socket.addEventListener(egret.Event.CLOSE, this.onSocketClose, this);
                 //添加异常侦听，出现异常会调用此方法
                 this.socket.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onSocketError, this);
-                this.socket.connect("127.0.0.1", 8888);
+                this.socket.connect(ip, port);
             } catch(e) {
                 console.error(e);
             }

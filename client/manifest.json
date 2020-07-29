@@ -41,8 +41,11 @@
 		"bin-debug/ecs_module/Event/EventMetaComponent.js",
 		"bin-debug/ecs_module/Event/EventSystem.js",
 		"bin-debug/ecs_module/Game/GameComponent.js",
+		"bin-debug/ecs_module/Game/GameEntity.js",
 		"bin-debug/DemoGameUI.js",
-		"bin-debug/ecs_module/Game/GameSystem.js",
+		"bin-debug/ecs_module/Network/ProtoLoader.js",
+		"bin-debug/ecs_module/Network/RpcComponent.js",
+		"bin-debug/ecs_module/Network/RpcSystem.js",
 		"bin-debug/ecs_module/ObjectPool/PoolComponent.js",
 		"bin-debug/ecs_module/ObjectPool/PoolEntity.js",
 		"bin-debug/ecs_module/ObjectPool/PoolSystem.js",
@@ -66,6 +69,6 @@
 		"bin-debug/ecs_module/UI/UILoad/ResourceLoadSystem.js",
 		"bin-debug/ecs_module/Utils/ClassSystem.js",
 		"bin-debug/game/config/GlobalConfig.js",
-		"bin-debug/ecs_module/Game/GameEntity.js"
+		"bin-debug/ecs_module/Game/GameSystem.js"
 	]
 }

@@ -31,85 +31,6 @@ class Main extends eui.UILayer {
     public static STAGE:egret.Stage
     public static mainEntrace:Main
 
-    // public constructor() {
-    //     super();
-    //     this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
-    // }
-
-    private doTest() {
-        let c2sProto = `
-.package {
-	type 0 : integer
-	session 1 : integer
-    ud 2 : string
-}
-
-handshake 1 {
-	response {
-		msg 0  : string
-	}
-}
-
-get 2 {
-	request {
-		what 0 : string
-	}
-	response {
-		result 0 : string
-	}
-}
-
-set 3 {
-	request {
-		what 0 : string
-		value 1 : string
-	}
-}
-
-say 4 {
-	request {
-		msg 0 : string
-	}
-}
-
-quit 5 {}
-        `
-        let s2cProto = `
-.package {
-    type 0 : integer
-    session 1 : integer
-    ud 2 : string
-}
-
-auth 1 {
-    response {
-        token 0 : string
-    }
-}
-
-heartbeat 2 {}
-        `
-        let s2c = new sproto.SprotoManager(s2cProto)
-        let c2s = new sproto.SprotoManager(c2sProto)
-        let rpc = new sproto.SprotoRpc(s2c, c2s)
-        // let srpc = new sproto.SprotoRpc(c2s, s2c)
-
-        // let pk = rpc.packRequest("handshake", null, 1)
-        // console.log(pk)
-        // pk = rpc.packRequest("set", { what : "hello", value : "world" }, 2)
-        // let res = srpc.unpackMessage(pk)
-        // console.log(res)
-        // res.response(null)
-
-        // pk = srpc.packRequest("heartbeat", null)
-        // res = rpc.unpackMessage(pk, 1)
-        // console.log("heartbeat", pk, res)
-
-
-        let gs = new network.GameSocket(s2c, c2s);
-        gs.initSocket();
-    }
-
     protected createChildren(): void {
         super.createChildren();
         egret.Bitmap.defaultSmoothing = false;
@@ -156,7 +77,6 @@ heartbeat 2 {}
         const userInfo = await platform.getUserInfo();
         console.log(userInfo);
 
-        this.doTest();
         // console.log("test2() start")
         // this.test2();
 
@@ -168,6 +88,8 @@ heartbeat 2 {}
         World.shareInstance.createSystem(SoundSystem).execute()
         World.shareInstance.createSystem(PoolSystem).execute()
         World.shareInstance.createSystem(AnimationSystem).execute()
+
+        World.shareInstance.createSystem(RpcSystem).execute()
         
         //初始化UI管理系统
         let uiManageSys = World.shareInstance.createSystem(UIManageSystem)
