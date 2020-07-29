@@ -1,0 +1,3 @@
+class GameEntity extends Entity {
+
+}

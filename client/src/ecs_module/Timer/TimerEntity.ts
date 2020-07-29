@@ -1,0 +1,3 @@
+class TimerEntity extends Entity
+{
+}

@@ -1,0 +1,4 @@
+class PlatformSystem {
+	public constructor() {
+	}
+}

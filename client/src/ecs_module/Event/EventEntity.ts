@@ -1,0 +1,4 @@
+class EventEntity extends Entity {
+	
+	
+}

@@ -1,0 +1,3 @@
+class PoolEntity extends Entity{
+	
+}
