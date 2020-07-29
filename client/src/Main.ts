@@ -28,8 +28,8 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 class Main extends eui.UILayer {
-
-
+    public static STAGE:egret.Stage
+    public static mainEntrace:Main
 
     // public constructor() {
     //     super();
@@ -143,6 +143,9 @@ heartbeat 2 {}
     }
 
     private async runGame() {
+        Main.STAGE = this.stage
+        Main.mainEntrace = this
+
         await this.loadBasicResource()
         await this.loadResource()
         // return;
