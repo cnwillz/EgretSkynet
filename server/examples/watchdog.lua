@@ -6,6 +6,7 @@ local gate
 local agent = {}
 
 local config
+local system
 
 local MODE = ...
 
@@ -65,4 +66,32 @@ skynet.start(function()
 
 	gate = skynet.newservice("gate", MODE)
 	config = skynet.newservice("config")
+	system = skynet.newservice("root_system")
+	skynet.call(system, "lua", "init")
+
+	skynet.fork(function()
+		local STRANDARD_TICK_TIME = 5
+		local lastTime = 0
+		local nowTime = 0
+		local passedTime = 0
+		local delta = 0
+
+		print("server tick rate", 100 / STRANDARD_TICK_TIME)
+
+		while true do
+			nowTime = skynet.now()
+			delta = nowTime - lastTime 
+			lastTime = nowTime
+			skynet.call(system, "lua", "tick", delta)
+			skynet.sleep(3)
+			passedTime = skynet.now() - lastTime
+			if passedTime < STRANDARD_TICK_TIME then
+				skynet.sleep(STRANDARD_TICK_TIME - passedTime)
+			else
+				-- tick rate lower than 20 calc them
+				-- TODO 1s 1m 10m
+				local rate = 100 / passedTime
+			end
+		end
+	end)
 end)
