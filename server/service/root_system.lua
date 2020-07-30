@@ -58,11 +58,10 @@ function CMD.init()
         mass = 100,
         hairColor = "red"
     }
+
     -- add entities
     world:addEntity(joe)
     world:addEntity(mike)
-
-    
 end
 
 function CMD.tick(dt)

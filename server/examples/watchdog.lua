@@ -71,7 +71,7 @@ skynet.start(function()
 
 	skynet.fork(function()
 		local STRANDARD_TICK_TIME = 5
-		local lastTime = 0
+		local lastTime = skynet.now()
 		local nowTime = 0
 		local passedTime = 0
 		local delta = 0
@@ -83,7 +83,6 @@ skynet.start(function()
 			delta = nowTime - lastTime 
 			lastTime = nowTime
 			skynet.call(system, "lua", "tick", delta)
-			skynet.sleep(3)
 			passedTime = skynet.now() - lastTime
 			if passedTime < STRANDARD_TICK_TIME then
 				skynet.sleep(STRANDARD_TICK_TIME - passedTime)
