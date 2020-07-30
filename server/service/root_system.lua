@@ -59,9 +59,17 @@ function CMD.init()
         hairColor = "red"
     }
 
+    local Rectangle = require "component.rectangle"
+
+    local shape = {
+        rect = Rectangle:new(nil, 10, 20),
+        position = require "component.position"
+    }
+
     -- add entities
     world:addEntity(joe)
     world:addEntity(mike)
+    world:addEntity(shape)
 end
 
 function CMD.tick(dt)
