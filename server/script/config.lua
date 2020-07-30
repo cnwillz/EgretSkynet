@@ -164,7 +164,6 @@ local function InitConfig(path)
     end
 
     local cmd = string.format("dir /S %s /b",path)
-    print(cmd)
 	local fp = io.popen(cmd)
     for filename in fp:lines() do
         if not string.find(filename, "language") and ends(filename, ".config") then
