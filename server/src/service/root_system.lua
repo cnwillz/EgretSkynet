@@ -63,7 +63,8 @@ function CMD.init()
 
     local shape = {
         rect = Rectangle:new(nil, 10, 20),
-        position = require "component.position"
+        position = require "component.position",
+        dba = { table = "shape"}
     }
 
     -- add entities

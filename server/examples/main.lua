@@ -13,6 +13,7 @@ skynet.start(function()
 	end
 	skynet.newservice("debug_console",8000)
 	skynet.newservice("simpledb")
+	local db = skynet.newservice("db_driver", "127.0.0.1", 27017, "testdb", "test", "test")
 	local watchdog = skynet.newservice("watchdog", MODE)
 	skynet.call(watchdog, "lua", "start", {
 		port = 8888,
