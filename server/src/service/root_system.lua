@@ -71,6 +71,20 @@ function CMD.init()
     world:addEntity(joe)
     world:addEntity(mike)
     world:addEntity(shape)
+
+    local b={}
+	local e={}
+	for i = 1, 256 do
+        b[i]={id=i}
+        if i % 2 == 0 then
+            table.insert(e, {id=i,x=i,y=i})
+            -- e[i/2]={id=i,x=i,y=i}
+        end
+	end
+
+    world:addEntity({
+        chunk = {x = 6, y= 7, b = b, e= e}
+    })
 end
 
 function CMD.tick(dt)
