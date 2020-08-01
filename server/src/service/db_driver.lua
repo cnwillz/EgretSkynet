@@ -9,17 +9,20 @@ if port then
 	port = math.tointeger(port)
 end
 
-local db = {}
+local map = {}
+
+--connection pool
+local connection = {}
 
 local command = {}
 
 function command.GET(key)
-	return db[key]
+	return map[key]
 end
 
 function command.SET(key, value)
-	local last = db[key]
-	db[key] = value
+	local last = map[key]
+	map[key] = value
 	return last
 end
 
@@ -36,13 +39,48 @@ end
 
 function command.CONFIG()
 	return {
-        host = host, port = port,
-        username = username, password = password,
-        authdb = db_name,
+			host = host, port = port,
+			username = username, password = password,
+			authdb = db_name,
     }
 end
 
+function command.INSERT(table, ...)
+	map.db[table]:insert(...)
+end
+
+function command.DELETE(table, ...)
+	map.db[table]:delete(...)
+end
+
+function command.FIND(t, ...)
+	local r = map.db[t]:find(...)
+	local arr = {}
+	while r:hasNext() do
+		table.insert(arr, r:next())
+	end
+	return arr
+end
+
+function command.FINDONE(table, ...)
+	return map.db[table]:findOne(...)
+end
+
+function command.UPDATE(table, ...)
+	map.db[table]:update(...)
+end
+
 skynet.start(function()
+	local c = mongo.client(
+		{
+			host = host, port = port,
+			username = username, password = password,
+			authdb = db_name,
+		}
+    )
+
+	map.db = c[db_name]
+
 	skynet.dispatch("lua", function(session, address, cmd, ...)
 		cmd = cmd:upper()
 		if cmd == "PING" then
