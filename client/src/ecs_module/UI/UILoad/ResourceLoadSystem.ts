@@ -33,7 +33,7 @@ class ResourceLoadSystem extends System implements RES.PromiseTaskReporter {
 			let uILoadEntity = World.shareInstance.getEntity(ResourceLoadEntity)
 			for (let i = 1; i <= 10; i++) {
                 loadingView.onProgress(i, 10);
-                await this.delay(300);
+                await this.delay(30);
             }
 			uILoadEntity.removeComponent(loadingView)
 			Main.STAGE.removeChild(loadingView);
